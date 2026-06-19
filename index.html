@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    overflow:hidden;
+    padding:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:30px 25px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    width:100%;
+    max-width:400px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+h1{
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+h2{
+    font-size:1.6rem;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.7;
+    font-size:1rem;
+    margin-bottom:20px;
+}
+
+.btn{
+    border:none;
+    padding:14px 28px;
+    border-radius:50px;
+    background:white;
+    color:#ff4081;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+.hidden{
+    display:none;
+    margin-top:20px;
+    animation:fadeIn 1s;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    font-size:35px;
+    animation:rise 10s linear infinite;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+@media(max-width:480px){
+    h1{
+        font-size:1.8rem;
+    }
+
+    h2{
+        font-size:1.4rem;
+    }
+
+    p{
+        font-size:0.95rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <h2>Dear Bestie ❤️</h2>
+
+    <p>
+        Wishing you endless happiness, success, love and beautiful memories.
+        May your special day be filled with smiles, laughter and everything
+        your heart desires. ✨🎉
+    </p>
+
+    <button class="btn" onclick="showMessage()">
+        Open Surprise 🎁
+    </button>
+
+    <div id="surprise" class="hidden">
+        <h2>🎈 You Are Amazing! 🎈</h2>
+        <p>
+            May this year bring you countless reasons to smile and all your dreams come true. 💖
+        </p>
+    </div>
+</div>
+
+<!-- Balloons -->
+<div class="balloon" style="left:10%;animation-delay:0s;">🎈</div>
+<div class="balloon" style="left:30%;animation-delay:2s;">🎈</div>
+<div class="balloon" style="left:50%;animation-delay:4s;">🎈</div>
+<div class="balloon" style="left:70%;animation-delay:1s;">🎈</div>
+<div class="balloon" style="left:90%;animation-delay:3s;">🎈</div>
+
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+function launchConfetti(){
+    var duration = 5000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 5,
+            angle: 60,
+            spread: 80,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 5,
+            angle: 120,
+            spread: 80,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+}
+
+window.onload = launchConfetti;
+
+function showMessage(){
+    document.getElementById("surprise").style.display="block";
+
+    confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+    });
+}
+</script>
+
+</body>
+</html>
